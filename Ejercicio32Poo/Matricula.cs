@@ -17,7 +17,7 @@ namespace Ejercicio32Poo
         public int Estrato { get; set; }
         public double ValorCredito { get; set; }
 
-        // Constructor
+        // Propiedades
         public Matricula(string nombre, int estrato, int creditos, double valorCredito)
         {
             Nombre = nombre;
@@ -71,3 +71,4 @@ namespace Ejercicio32Poo
             }
         }
     }
+}
