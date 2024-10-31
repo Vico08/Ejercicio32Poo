@@ -18,42 +18,39 @@ namespace Ejercicio32Poo
         //Para el estrato 2, el subsidio de alimentación y transporte es igual a $100.000.
         //Se debe informar al usuario sobre el costo de la matrícula y el valor del subsidio.
         //La aplicación debe preguntar al usuario si quiere volver al inicio o no para calcular la matrícula de un nuevo estudiante.
-        
+
         // definicion propiedades de la clse Matricula
-        public string Nombre { get; set; } 
+        public string Nombre { get; set; }
         public int Creditos { get; set; }
         public int Estrato { get; set; }
-        public double ValorMatricula { get; set; }
+        public double ValorCredito { get; set; }
 
-
-        //metodos de la clase Matricula 
-
-        public void Estudiante(string nombre, int estrato, int creditos, double valorCredito)
-
+        // Constructor
+        public Matricula(string nombre, int estrato, int creditos, double valorCredito)
         {
             Nombre = nombre;
             Estrato = estrato;
             Creditos = creditos;
-            ValorMatricula = valorCredito;
+            ValorCredito = valorCredito;
         }
 
-        public CalcularMatricula()
+        // Método calculo matrícula
+        public double CalcularMatricula()
         {
             double matricula = 0;
-
             if (Creditos <= 20)
             {
-                matricula = Creditos * ValorMatricula;
+                matricula = Creditos * ValorCredito;
             }
             else
             {
-                matricula = 20 * ValorMatricula + (Creditos - 20) * ValorMatricula * 2;
+                matricula = 20 * ValorCredito + (Creditos - 20) * ValorCredito * 2;
             }
-
             return Descuento(matricula);
         }
-        
-         private  double Descuento(double matricula)
+
+        // Método Descuento
+        private double Descuento(double matricula)
         {
             switch (Estrato)
             {
@@ -67,8 +64,10 @@ namespace Ejercicio32Poo
                     return matricula;
             }
         }
-        public  CalcularSubsidio ()
-                {
+
+        // Método para calcular subsidio
+        public double CalcularSubsidio()
+        {
             switch (Estrato)
             {
                 case 1:
@@ -80,14 +79,3 @@ namespace Ejercicio32Poo
             }
         }
     }
-
-
-
-
-
-
-
-
-
-}
-}
