@@ -19,10 +19,75 @@ namespace Ejercicio32Poo
         //Se debe informar al usuario sobre el costo de la matrícula y el valor del subsidio.
         //La aplicación debe preguntar al usuario si quiere volver al inicio o no para calcular la matrícula de un nuevo estudiante.
         
+        // definicion propiedades de la clse Matricula
         public string Nombre { get; set; } 
-        public int Credito { get; set; }
+        public int Creditos { get; set; }
         public int Estrato { get; set; }
-        public float ValorMatricula { get; set; }
+        public double ValorMatricula { get; set; }
 
+
+        //metodos de la clase Matricula 
+
+        public void Estudiante(string nombre, int estrato, int creditos, double valorCredito)
+
+        {
+            Nombre = nombre;
+            Estrato = estrato;
+            Creditos = creditos;
+            ValorMatricula = valorCredito;
+        }
+
+        public CalcularMatricula()
+        {
+            double matricula = 0;
+
+            if (Creditos <= 20)
+            {
+                matricula = Creditos * ValorMatricula;
+            }
+            else
+            {
+                matricula = 20 * ValorMatricula + (Creditos - 20) * ValorMatricula * 2;
+            }
+
+            return Descuento(matricula);
+        }
+        
+         private  double Descuento(double matricula)
+        {
+            switch (Estrato)
+            {
+                case 1:
+                    return matricula * 0.2; // Descuento 80%
+                case 2:
+                    return matricula * 0.5; // Descuento 50%
+                case 3:
+                    return matricula * 0.7; // Descuento 30%
+                default:
+                    return matricula;
+            }
+        }
+        public  CalcularSubsidio ()
+                {
+            switch (Estrato)
+            {
+                case 1:
+                    return 200000;
+                case 2:
+                    return 100000;
+                default:
+                    return 0;
+            }
+        }
     }
+
+
+
+
+
+
+
+
+
+}
 }
